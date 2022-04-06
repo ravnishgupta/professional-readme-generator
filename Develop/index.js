@@ -35,7 +35,12 @@ const getLicenses = () => {
 
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+
+  fs.writeFile(fileName, data, err =>
+  err ? console.log(err) : console.log('Success!')
+  );
+}
 
 const init = () => {
     
@@ -89,12 +94,12 @@ const init = () => {
           name: 'testInst',
           message: questions[5], 
         },
-        {
-          type: 'list',
-          name: 'license',
-          message: questions[6], 
-          choices: getLicenses()
-        },
+        // {
+        //   type: 'list',
+        //   name: 'license',
+        //   message: questions[6], 
+        //   choices: getLicenses()
+        // },
         {
           type: 'input',
           name: 'github',
@@ -117,11 +122,9 @@ const init = () => {
         }
       ])
       .then(answers => {
-        const fileData = `# ${answers.projectTitle}\n ## Description\n ${answers.projectDesc}\n ## Installation\n ${answers.installInst} ## Usage\n ${answers.usageinfo}\n  ## Contributing\n ${answers.contribution}\n ## Tests\n ${answers.testInst}\n`
-       // fileData += `## License\n ${answers.license}\n ## Questions [github/${answers.github}](https://github.com/${answers.github})`
-       // console.log(fileData);
+        const fileData = `# ${answers.projectTitle}\n## Description\n ${answers.projectDesc}\n ## Installation\n ${answers.installInst}\n ## Usage\n ${answers.usageinfo}\n  ## Contributing\n ${answers.contribution}\n ## Tests\n ${answers.testInst}\n ## Questions\n - [github/${answers.github}](https://github.com/${answers.github})\n - [Contact Me](mailto:ravnish@gmail.com)\n ## Table of Contents\n - [Installation](#installation)\n - [Usage](#usage)\n - [Credits](#contributing)\n - [License](#license)`
+          writeToFile('./README.md', fileData);
 
-        //[github/ravnishgupta](https://github.com/ravnishgupta)
       });
 }
 
