@@ -9,7 +9,7 @@ const questions = [
     'Please provide a short description of your project.',
     'Please provide installation instructions, if any.',
     'Please provide usage information, if any',
-    'Please contribution guidelines, if any.',
+    'Please provide names contributors, if any.',
     'Please provide test instructions, if any.',
     'Please choose a license for your application from a list of options',
     'Please enter your GitHub username',
