@@ -94,12 +94,12 @@ const init = () => {
           name: 'testInst',
           message: questions[5], 
         },
-        // {
-        //   type: 'list',
-        //   name: 'license',
-        //   message: questions[6], 
-        //   choices: getLicenses()
-        // },
+        {
+          type: 'list',
+          name: 'license',
+          message: questions[6], 
+          choices: getLicenses()
+        },
         {
           type: 'input',
           name: 'github',
@@ -122,7 +122,7 @@ const init = () => {
         }
       ])
       .then(answers => {
-        const fileData = `# ${answers.projectTitle}\n## Description\n ${answers.projectDesc}\n ## Installation\n ${answers.installInst}\n ## Usage\n ${answers.usageinfo}\n  ## Contributing\n ${answers.contribution}\n ## Tests\n ${answers.testInst}\n ## Questions\n - [github/${answers.github}](https://github.com/${answers.github})\n - [Contact Me](mailto:ravnish@gmail.com)\n ## Table of Contents\n - [Installation](#installation)\n - [Usage](#usage)\n - [Credits](#contributing)\n - [License](#license)`
+        const fileData = `# ${answers.projectTitle}\n## Description\n ${answers.projectDesc}\n ## Installation <a name="installation"></a>\n ${answers.installInst}\n ## Usage <a name="usage"></a>\n ${answers.usageinfo}\n ## Contributing <a name="contributing"></a>\n ${answers.contribution}\n ## Tests\n ${answers.testInst}\n ## Questions\n - [github/${answers.github}](https://github.com/${answers.github})\n - [Contact Me](mailto:ravnish@gmail.com)\n ## License <a name="license"></a>\n - ${answers.license}\n ## Table of Contents\n - [Installation](#installation)\n - [Usage](#usage)\n - [Credits](#contributing)\n - [License](#license)`
           writeToFile('./README.md', fileData);
 
       });
